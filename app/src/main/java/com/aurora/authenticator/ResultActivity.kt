@@ -1,8 +1,8 @@
 package com.aurora.authenticator
-
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.aurora.authenticator.databinding.ActivityResultBinding
 import nl.komponents.kovenant.task
@@ -50,6 +50,12 @@ class ResultActivity : Activity() {
                 B.email.setText(it["Email"])
                 B.auth.setText(it["Auth"])
                 B.token.setText(it["Token"])
+
+                Log.i("AC2DM_Name", "" + it["firstName"])
+                Log.i("AC2DM_EMail", "" + it["Email"])
+                Log.i("AC2DM_Auth", "" + it["Auth"])
+                Log.i("AC2DM_Token", "" + it["Token"])
+
             } else {
                 B.viewFlipper.displayedChild = 2
                 Toast.makeText(this, "Failed to generate AC2DM Auth Token", Toast.LENGTH_LONG).show()
