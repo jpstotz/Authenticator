@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("SetJavaScriptEnabled")
     private fun setup() {
         cookieManager.removeAllCookies(null)
+        cookieManager.setAcceptCookie(true)
         cookieManager.acceptThirdPartyCookies(B.webview)
         cookieManager.setAcceptThirdPartyCookies(B.webview, true)
 

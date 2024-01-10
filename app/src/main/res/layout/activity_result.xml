@@ -111,6 +111,20 @@
                 android:inputType="text"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/status_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/token_layout"
+            android:singleLine="false"
+            android:text="@string/success_message"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="?colorAccent"/>
+
+
     </RelativeLayout>
 
     <RelativeLayout

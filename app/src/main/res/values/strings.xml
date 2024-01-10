@@ -5,5 +5,6 @@
     <string name="aas_token">AAS Token</string>
     <string name="auth_token">Auth Token</string>
     <string name="success">Success</string>
+    <string name="success_message">All results on this page have also been logged to logcat. Filter for \"AC2DM\" to get them.</string>
     <string name="failed">Failed!!</string>
 </resources>
