@@ -1,14 +1,13 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
     defaultConfig {
         namespace = "com.aurora.authenticator"
-        compileSdk  33
-        targetSdkVersion 33
-        buildToolsVersion = "33.0.2"
+        compileSdk  34
+        targetSdkVersion 34
+        buildToolsVersion = "34.0.0"
         minSdkVersion 21
         versionCode 3
         versionName "1.0"
