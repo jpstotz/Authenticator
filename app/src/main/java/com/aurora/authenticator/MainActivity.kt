@@ -4,7 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.webkit.*
+import android.webkit.CookieManager
+import android.webkit.WebSettings
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import com.aurora.authenticator.databinding.ActivityMainBinding
@@ -24,10 +27,11 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("SetJavaScriptEnabled")
     private fun setup() {
-        cookieManager.removeAllCookies(null)
-        cookieManager.setAcceptCookie(true)
-        cookieManager.acceptThirdPartyCookies(B.webview)
-        cookieManager.setAcceptThirdPartyCookies(B.webview, true)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            cookieManager.removeAllCookies(null)
+            cookieManager.acceptThirdPartyCookies(B.webview)
+            cookieManager.setAcceptThirdPartyCookies(B.webview, true)
+        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             B.webview.settings.safeBrowsingEnabled = false
@@ -65,15 +69,17 @@ class MainActivity : AppCompatActivity() {
             putExtra(AUTH_TOKEN, oauthToken)
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
-        startActivity(intent, ActivityOptionsCompat.makeCustomAnimation(
+        startActivity(
+            intent, ActivityOptionsCompat.makeCustomAnimation(
                 this@MainActivity,
                 android.R.anim.fade_in,
                 android.R.anim.fade_out
-        ).toBundle())
+            ).toBundle()
+        )
     }
 
     companion object {
-        const val EMBEDDED_SETUP_URL = "https://accounts.google.com/EmbeddedSetup/identifier?flowName=EmbeddedSetupAndroid"
+        const val EMBEDDED_SETUP_URL = "https://accounts.google.com/EmbeddedSetup"
         const val AUTH_TOKEN = "oauth_token"
         const val AUTH_EMAIL = "AUTH_EMAIL"
     }
